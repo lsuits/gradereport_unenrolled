@@ -15,9 +15,9 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Grader report preferences configuration page
+ * Unenrolled report preferences configuration page
  *
- * @package   gradereport_grader
+ * @package   gradereport_unenrolled
  * @copyright 2007 Nicolas Connault
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -29,7 +29,7 @@ core_php_time_limit::raise();
 
 $courseid      = required_param('id', PARAM_INT);
 
-$PAGE->set_url(new moodle_url('/grade/report/grader/preferences.php', array('id'=>$courseid)));
+$PAGE->set_url(new moodle_url('/grade/report/unenrolled/preferences.php', array('id'=>$courseid)));
 $PAGE->set_pagelayout('admin');
 
 /// Make sure they can even access this course
@@ -42,10 +42,10 @@ require_login($course);
 
 $context = context_course::instance($course->id);
 $systemcontext = context_system::instance();
-require_capability('gradereport/grader:view', $context);
+require_capability('gradereport/unenrolled:view', $context);
 
 require('preferences_form.php');
-$mform = new grader_report_preferences_form('preferences.php', compact('course'));
+$mform = new unenrolled_report_preferences_form('preferences.php', compact('course'));
 
 // If data submitted, then process and store.
 if (!$mform->is_cancelled() && $data = $mform->get_data()) {
@@ -61,19 +61,19 @@ if (!$mform->is_cancelled() && $data = $mform->get_data()) {
         }
     }
 
-    redirect($CFG->wwwroot . '/grade/report/grader/index.php?id='.$courseid); // message here breaks accessability and is sloooowww
+    redirect($CFG->wwwroot . '/grade/report/unenrolled/index.php?id='.$courseid); // message here breaks accessability and is sloooowww
     exit;
 }
 
 if ($mform->is_cancelled()){
-    redirect($CFG->wwwroot . '/grade/report/grader/index.php?id='.$courseid);
+    redirect($CFG->wwwroot . '/grade/report/unenrolled/index.php?id='.$courseid);
 }
 
-print_grade_page_head($courseid, 'preferences', 'grader', get_string('preferences', 'gradereport_grader'));
+print_grade_page_head($courseid, 'preferences', 'unenrolled', get_string('preferences', 'gradereport_unenrolled'));
 
 // If USER has admin capability, print a link to the site config page for this report
 if (has_capability('moodle/site:config', $systemcontext)) {
-    echo '<div id="siteconfiglink"><a href="'.$CFG->wwwroot.'/'.$CFG->admin.'/settings.php?section=gradereportgrader">';
+    echo '<div id="siteconfiglink"><a href="'.$CFG->wwwroot.'/'.$CFG->admin.'/settings.php?section=gradereportunenrolled">';
     echo get_string('changereportdefaults', 'grades');
     echo "</a></div>\n";
 }

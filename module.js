@@ -1,14 +1,14 @@
 /**
- * Grader report namespace
+ * Unenrolled report namespace
  */
-M.gradereport_grader = {
+M.gradereport_unenrolled = {
     /**
      * @param {Array} reports An array of instantiated report objects
      */
     reports : [],
     /**
-     * @namespace M.gradereport_grader
-     * @param {Object} reports A collection of classes used by the grader report module
+     * @namespace M.gradereport_unenrolled
+     * @param {Object} reports A collection of classes used by the unenrolled report module
      */
     classes : {},
     /**
@@ -16,7 +16,7 @@ M.gradereport_grader = {
      */
     tooltip : null,
     /**
-     * Instantiates a new grader report
+     * Instantiates a new unenrolled report
      *
      * @function
      * @param {YUI} Y
@@ -33,20 +33,20 @@ M.gradereport_grader = {
             /**
              * Attaches the tooltip event to the provided cell
              *
-             * @function M.gradereport_grader.tooltip.attach
-             * @this M.gradereport_grader
+             * @function M.gradereport_unenrolled.tooltip.attach
+             * @this M.gradereport_unenrolled
              * @param {Y.Node} td The cell to attach the tooltip event to
              */
             attach : function(td, report) {
                 td.on('mouseenter', this.show, this, report);
             },
             /**
-             * Shows the tooltip: Callback from @see M.gradereport_grader.tooltip#attach
+             * Shows the tooltip: Callback from @see M.gradereport_unenrolled.tooltip#attach
              *
-             * @function M.gradereport_grader.tooltip.show
-             * @this {M.gradereport_grader.tooltip}
+             * @function M.gradereport_unenrolled.tooltip.show
+             * @this {M.gradereport_unenrolled.tooltip}
              * @param {Event} e
-             * @param {M.gradereport_grader.classes.report} report
+             * @param {M.gradereport_unenrolled.classes.report} report
              */
             show : function(e, report) {
                 e.halt();
@@ -56,7 +56,7 @@ M.gradereport_grader = {
                     return;
                 }
 
-                var content = '<div class="graderreportoverlay" role="tooltip" aria-describedby="' + properties.id + '">';
+                var content = '<div class="unenrolledreportoverlay" role="tooltip" aria-describedby="' + properties.id + '">';
                 content += '<div class="fullname">'+properties.username+'</div><div class="itemname">'+properties.itemname+'</div>';
                 if (properties.feedback) {
                     content += '<div class="feedback">'+properties.feedback+'</div>';
@@ -83,8 +83,8 @@ M.gradereport_grader = {
             /**
              * Hides the tooltip
              *
-             * @function M.gradereport_grader.tooltip.hide
-             * @this {M.gradereport_grader.tooltip}
+             * @function M.gradereport_unenrolled.tooltip.hide
+             * @this {M.gradereport_unenrolled.tooltip}
              * @param {Event} e
              * @param {Y.Node} cell
              */
@@ -100,16 +100,16 @@ M.gradereport_grader = {
 };
 
 /**
- * Initialises the JavaScript for the gradebook grader report
+ * Initialises the JavaScript for the gradebook unenrolled report
  *
  * The functions fall into 3 groups:
- * M.gradereport_grader.classes.ajax Used when editing is off and fields are dynamically added and removed
- * M.gradereport_grader.classes.existingfield Used when editing is on meaning all fields are already displayed
- * M.gradereport_grader.classes.report Common to both of the above
+ * M.gradereport_unenrolled.classes.ajax Used when editing is off and fields are dynamically added and removed
+ * M.gradereport_unenrolled.classes.existingfield Used when editing is on meaning all fields are already displayed
+ * M.gradereport_unenrolled.classes.report Common to both of the above
  *
  * @class report
  * @constructor
- * @this {M.gradereport_grader}
+ * @this {M.gradereport_unenrolled}
  * @param {YUI} Y
  * @param {int} id The id of the table to attach the report to
  * @param {Object} cfg Configuration variables
@@ -117,7 +117,7 @@ M.gradereport_grader = {
  * @param {Array} users An array containing user information
  * @param {Array} feedback An array containing feedback information
  */
-M.gradereport_grader.classes.report = function(Y, id, cfg, items, users, feedback, grades) {
+M.gradereport_unenrolled.classes.report = function(Y, id, cfg, items, users, feedback, grades) {
     this.Y = Y;
     this.isediting = (cfg.isediting);
     this.ajaxenabled = (cfg.ajaxenabled);
@@ -136,7 +136,7 @@ M.gradereport_grader.classes.report = function(Y, id, cfg, items, users, feedbac
             tr.all('th.cell').on('click', this.table_highlight_row, this, tr);
             // Display tooltips
             tr.all('td.cell').each(function(cell){
-                M.gradereport_grader.tooltip.attach(cell, this);
+                M.gradereport_unenrolled.tooltip.attach(cell, this);
             }, this);
         }
     }, this);
@@ -160,18 +160,18 @@ M.gradereport_grader.classes.report = function(Y, id, cfg, items, users, feedbac
 
     // If ajax is enabled then initialise the ajax component
     if (this.ajaxenabled) {
-        this.ajax = new M.gradereport_grader.classes.ajax(this, cfg);
+        this.ajax = new M.gradereport_unenrolled.classes.ajax(this, cfg);
     }
 };
 /**
  * Extend the report class with the following methods and properties
  */
-M.gradereport_grader.classes.report.prototype.table = null;           // YUI Node for the reports main table
-M.gradereport_grader.classes.report.prototype.items = [];             // Array containing grade items
-M.gradereport_grader.classes.report.prototype.users = [];             // Array containing user information
-M.gradereport_grader.classes.report.prototype.feedback = [];          // Array containing feedback items
-M.gradereport_grader.classes.report.prototype.ajaxenabled = false;    // True is AJAX is enabled for the report
-M.gradereport_grader.classes.report.prototype.ajax = null;            // An instance of the ajax class or null
+M.gradereport_unenrolled.classes.report.prototype.table = null;           // YUI Node for the reports main table
+M.gradereport_unenrolled.classes.report.prototype.items = [];             // Array containing grade items
+M.gradereport_unenrolled.classes.report.prototype.users = [];             // Array containing user information
+M.gradereport_unenrolled.classes.report.prototype.feedback = [];          // Array containing feedback items
+M.gradereport_unenrolled.classes.report.prototype.ajaxenabled = false;    // True is AJAX is enabled for the report
+M.gradereport_unenrolled.classes.report.prototype.ajax = null;            // An instance of the ajax class or null
 /**
  * Highlights a row in the report
  *
@@ -179,7 +179,7 @@ M.gradereport_grader.classes.report.prototype.ajax = null;            // An inst
  * @param {Event} e
  * @param {Y.Node} tr The table row to highlight
  */
-M.gradereport_grader.classes.report.prototype.table_highlight_row = function (e, tr) {
+M.gradereport_unenrolled.classes.report.prototype.table_highlight_row = function (e, tr) {
     tr.all('.cell').toggleClass('hmarked');
 };
 /**
@@ -189,7 +189,7 @@ M.gradereport_grader.classes.report.prototype.table_highlight_row = function (e,
  * @param {Event} e
  * @param {Y.Node} cell
  */
-M.gradereport_grader.classes.report.prototype.table_highlight_column = function(e, cell) {
+M.gradereport_unenrolled.classes.report.prototype.table_highlight_column = function(e, cell) {
     // Among cell classes find the one that matches pattern / i[\d]+ /
     var itemclass = (' '+cell.getAttribute('class')+' ').match(/ (i[\d]+) /);
     if (itemclass) {
@@ -202,12 +202,12 @@ M.gradereport_grader.classes.report.prototype.table_highlight_column = function(
  * the cell to get information for or an array containing userid and itemid
  *
  * @function
- * @this {M.gradereport_grader}
+ * @this {M.gradereport_unenrolled}
  * @param {Y.Node|Array} arg Either a YUI Node instance or an array containing
  *                           the userid and itemid to reference
  * @return {Object}
  */
-M.gradereport_grader.classes.report.prototype.get_cell_info = function(arg) {
+M.gradereport_unenrolled.classes.report.prototype.get_cell_info = function(arg) {
 
     var userid= null;
     var itemid = null;
@@ -258,13 +258,13 @@ M.gradereport_grader.classes.report.prototype.get_cell_info = function(arg) {
  * Updates or creates the feedback JS structure for the given user/item
  *
  * @function
- * @this {M.gradereport_grader}
+ * @this {M.gradereport_unenrolled}
  * @param {Int} userid
  * @param {Int} itemid
  * @param {String} newfeedback
  * @return {Bool}
  */
-M.gradereport_grader.classes.report.prototype.update_feedback = function(userid, itemid, newfeedback) {
+M.gradereport_unenrolled.classes.report.prototype.update_feedback = function(userid, itemid, newfeedback) {
     for (var i in this.feedback) {
         if (this.feedback[i].user == userid && this.feedback[i].item == itemid) {
             this.feedback[i].content = newfeedback;
@@ -279,13 +279,13 @@ M.gradereport_grader.classes.report.prototype.update_feedback = function(userid,
  * Updates or creates the grade JS structure for the given user/item
  *
  * @function
- * @this {M.gradereport_grader}
+ * @this {M.gradereport_unenrolled}
  * @param {Int} userid
  * @param {Int} itemid
  * @param {String} newgrade
  * @return {Bool}
  */
-/*M.gradereport_grader.classes.report.prototype.update_grade = function(userid, itemid, newgrade) {
+/*M.gradereport_unenrolled.classes.report.prototype.update_grade = function(userid, itemid, newgrade) {
     for (var i in this.grades) {
         if (this.grades[i].user == userid && this.grades[i].item == itemid) {
             this.grades[i].content = newgrade;
@@ -300,11 +300,11 @@ M.gradereport_grader.classes.report.prototype.update_feedback = function(userid,
  * Initialises the AJAX component of this report
  * @class ajax
  * @constructor
- * @this {M.gradereport_grader.ajax}
- * @param {M.gradereport_grader.classes.report} report
+ * @this {M.gradereport_unenrolled.ajax}
+ * @param {M.gradereport_unenrolled.classes.report} report
  * @param {Object} cfg
  */
-M.gradereport_grader.classes.ajax = function(report, cfg) {
+M.gradereport_unenrolled.classes.ajax = function(report, cfg) {
     this.report = report;
     this.courseid = cfg.courseid || null;
     this.feedbacktrunclength = cfg.feedbacktrunclength || null;
@@ -321,31 +321,31 @@ M.gradereport_grader.classes.ajax = function(report, cfg) {
                 this.existingfields[userid] = [];
             }
             for (var itemid in report.items) {
-                this.existingfields[userid][itemid] = new M.gradereport_grader.classes.existingfield(this, userid, itemid);
+                this.existingfields[userid][itemid] = new M.gradereport_unenrolled.classes.existingfield(this, userid, itemid);
             }
         }
         // Disable the Update button as we're saving using ajax.
-        submitbutton = this.report.Y.one('#gradersubmit');
+        submitbutton = this.report.Y.one('#unenrolledsubmit');
         submitbutton.set('disabled', true);
     }
 };
 /**
  * Extend the ajax class with the following methods and properties
  */
-M.gradereport_grader.classes.ajax.prototype.report = null;                  // A reference to the report class this object will use
-M.gradereport_grader.classes.ajax.prototype.courseid = null;                // The id for the course being viewed
-M.gradereport_grader.classes.ajax.prototype.feedbacktrunclength = null;     // The length to truncate feedback to
-M.gradereport_grader.classes.ajax.prototype.studentsperpage = null;         // The number of students shown per page
-M.gradereport_grader.classes.ajax.prototype.showquickfeedback = null;       // True if feedback editing should be shown
-M.gradereport_grader.classes.ajax.prototype.current = null;                 // The field being currently editing
-M.gradereport_grader.classes.ajax.prototype.pendingsubmissions = [];        // Array containing pending IO transactions
-M.gradereport_grader.classes.ajax.prototype.scales = [];                    // An array of scales used in this report
+M.gradereport_unenrolled.classes.ajax.prototype.report = null;                  // A reference to the report class this object will use
+M.gradereport_unenrolled.classes.ajax.prototype.courseid = null;                // The id for the course being viewed
+M.gradereport_unenrolled.classes.ajax.prototype.feedbacktrunclength = null;     // The length to truncate feedback to
+M.gradereport_unenrolled.classes.ajax.prototype.studentsperpage = null;         // The number of students shown per page
+M.gradereport_unenrolled.classes.ajax.prototype.showquickfeedback = null;       // True if feedback editing should be shown
+M.gradereport_unenrolled.classes.ajax.prototype.current = null;                 // The field being currently editing
+M.gradereport_unenrolled.classes.ajax.prototype.pendingsubmissions = [];        // Array containing pending IO transactions
+M.gradereport_unenrolled.classes.ajax.prototype.scales = [];                    // An array of scales used in this report
 /**
  * Makes a cell editable
  * @function
- * @this {M.gradereport_grader.classes.ajax}
+ * @this {M.gradereport_unenrolled.classes.ajax}
  */
-M.gradereport_grader.classes.ajax.prototype.make_editable = function(e) {
+M.gradereport_unenrolled.classes.ajax.prototype.make_editable = function(e) {
     var node = e;
     if (e.halt) {
         e.halt();
@@ -370,40 +370,40 @@ M.gradereport_grader.classes.ajax.prototype.make_editable = function(e) {
     // Create the appropriate field widget
     switch (fieldtype) {
         case 'scale':
-            this.current = new M.gradereport_grader.classes.scalefield(this.report, node);
+            this.current = new M.gradereport_unenrolled.classes.scalefield(this.report, node);
             break;
         case 'text':
         default:
-            this.current = new M.gradereport_grader.classes.textfield(this.report, node);
+            this.current = new M.gradereport_unenrolled.classes.textfield(this.report, node);
             break;
     }
     this.current.replace().attach_key_events();
 
     // Making a field editable changes the grade table width.
     // Update the top scroll bar to reflect the new table width.
-    Y.use('moodle-gradereport_grader-scrollview', function() {
-        M.gradereport_grader.scrollview.resize();
+    Y.use('moodle-gradereport_unenrolled-scrollview', function() {
+        M.gradereport_unenrolled.scrollview.resize();
     });
 };
 /**
  * Callback function for the user pressing the enter key on an editable field
  *
  * @function
- * @this {M.gradereport_grader.classes.ajax}
+ * @this {M.gradereport_unenrolled.classes.ajax}
  * @param {Event} e
  */
-M.gradereport_grader.classes.ajax.prototype.keypress_enter = function(e) {
+M.gradereport_unenrolled.classes.ajax.prototype.keypress_enter = function(e) {
     this.process_editable_field(null);
 };
 /**
  * Callback function for the user pressing Tab or Shift+Tab
  *
  * @function
- * @this {M.gradereport_grader.classes.ajax}
+ * @this {M.gradereport_unenrolled.classes.ajax}
  * @param {Event} e
  * @param {Bool} ignoreshift If true and shift is pressed then don't exec
  */
-M.gradereport_grader.classes.ajax.prototype.keypress_tab = function(e, ignoreshift) {
+M.gradereport_unenrolled.classes.ajax.prototype.keypress_tab = function(e, ignoreshift) {
     var next = null;
     if (e.shiftKey) {
         if (ignoreshift) {
@@ -419,9 +419,9 @@ M.gradereport_grader.classes.ajax.prototype.keypress_tab = function(e, ignoreshi
  * Callback function for the user pressing an CTRL + an arrow key
  *
  * @function
- * @this {M.gradereport_grader.classes.ajax}
+ * @this {M.gradereport_unenrolled.classes.ajax}
  */
-M.gradereport_grader.classes.ajax.prototype.keypress_arrows = function(e) {
+M.gradereport_unenrolled.classes.ajax.prototype.keypress_arrows = function(e) {
     e.preventDefault();
     var next = null;
     switch (e.keyCode) {
@@ -444,10 +444,10 @@ M.gradereport_grader.classes.ajax.prototype.keypress_arrows = function(e) {
  * Processes an editable field an does what ever is required to update it
  *
  * @function
- * @this {M.gradereport_grader.classes.ajax}
+ * @this {M.gradereport_unenrolled.classes.ajax}
  * @param {Y.Node|null} next The next node to make editable (chaining)
  */
-M.gradereport_grader.classes.ajax.prototype.process_editable_field = function(next) {
+M.gradereport_unenrolled.classes.ajax.prototype.process_editable_field = function(next) {
     if (this.current.has_changed()) {
         var properties = this.report.get_cell_info(this.current.node);
         var values = this.current.commit();
@@ -464,11 +464,11 @@ M.gradereport_grader.classes.ajax.prototype.process_editable_field = function(ne
 /**
  * Gets the next cell that is editable (right)
  * @function
- * @this {M.gradereport_grader.classes.ajax}
+ * @this {M.gradereport_unenrolled.classes.ajax}
  * @param {Y.Node} cell
  * @return {Y.Node}
  */
-M.gradereport_grader.classes.ajax.prototype.get_next_cell = function(cell) {
+M.gradereport_unenrolled.classes.ajax.prototype.get_next_cell = function(cell) {
     var n = cell || this.current.node;
     var next = n.next('td');
     var tr = null;
@@ -483,11 +483,11 @@ M.gradereport_grader.classes.ajax.prototype.get_next_cell = function(cell) {
 /**
  * Gets the previous cell that is editable (left)
  * @function
- * @this {M.gradereport_grader.classes.ajax}
+ * @this {M.gradereport_unenrolled.classes.ajax}
  * @param {Y.Node} cell
  * @return {Y.Node}
  */
-M.gradereport_grader.classes.ajax.prototype.get_prev_cell = function(cell) {
+M.gradereport_unenrolled.classes.ajax.prototype.get_prev_cell = function(cell) {
     var n = cell || this.current.node;
     var next = n.previous('.grade');
     var tr = null;
@@ -503,11 +503,11 @@ M.gradereport_grader.classes.ajax.prototype.get_prev_cell = function(cell) {
 /**
  * Gets the cell above if it is editable (up)
  * @function
- * @this {M.gradereport_grader.classes.ajax}
+ * @this {M.gradereport_unenrolled.classes.ajax}
  * @param {Y.Node} cell
  * @return {Y.Node}
  */
-M.gradereport_grader.classes.ajax.prototype.get_above_cell = function(cell) {
+M.gradereport_unenrolled.classes.ajax.prototype.get_above_cell = function(cell) {
     var n = cell || this.current.node;
     var tr = n.ancestor('tr').previous('tr');
     var next = null;
@@ -527,11 +527,11 @@ M.gradereport_grader.classes.ajax.prototype.get_above_cell = function(cell) {
 /**
  * Gets the cell below if it is editable (down)
  * @function
- * @this {M.gradereport_grader.classes.ajax}
+ * @this {M.gradereport_unenrolled.classes.ajax}
  * @param {Y.Node} cell
  * @return {Y.Node}
  */
-M.gradereport_grader.classes.ajax.prototype.get_below_cell = function(cell) {
+M.gradereport_unenrolled.classes.ajax.prototype.get_below_cell = function(cell) {
     var n = cell || this.current.node;
     var tr = n.ancestor('tr').next('tr');
     var next = null;
@@ -550,16 +550,16 @@ M.gradereport_grader.classes.ajax.prototype.get_below_cell = function(cell) {
  * Submits changes for update
  *
  * @function
- * @this {M.gradereport_grader.classes.ajax}
+ * @this {M.gradereport_unenrolled.classes.ajax}
  * @param {Object} properties Properties of the cell being edited
  * @param {Object} values Object containing old + new values
  */
-M.gradereport_grader.classes.ajax.prototype.submit = function(properties, values) {
+M.gradereport_unenrolled.classes.ajax.prototype.submit = function(properties, values) {
     // Stop the IO queue so we can add to it
     this.report.Y.io.queue.stop();
     // If the grade has changed add an IO transaction to update it to the queue
     if (values.grade !== values.oldgrade) {
-        this.pendingsubmissions.push({transaction:this.report.Y.io.queue(M.cfg.wwwroot+'/grade/report/grader/ajax_callbacks.php', {
+        this.pendingsubmissions.push({transaction:this.report.Y.io.queue(M.cfg.wwwroot+'/grade/report/unenrolled/ajax_callbacks.php', {
             method : 'POST',
             data : 'id='+this.courseid+'&userid='+properties.userid+'&itemid='+properties.itemid+'&action=update&newvalue='+values.grade+'&type='+properties.itemtype+'&sesskey='+M.cfg.sesskey,
             on : {
@@ -575,7 +575,7 @@ M.gradereport_grader.classes.ajax.prototype.submit = function(properties, values
     }
     // If feedback is editable and has changed add to the IO queue for it
     if (values.editablefeedback && values.feedback !== values.oldfeedback) {
-        this.pendingsubmissions.push({transaction:this.report.Y.io.queue(M.cfg.wwwroot+'/grade/report/grader/ajax_callbacks.php', {
+        this.pendingsubmissions.push({transaction:this.report.Y.io.queue(M.cfg.wwwroot+'/grade/report/unenrolled/ajax_callbacks.php', {
             method : 'POST',
             data : 'id='+this.courseid+'&userid='+properties.userid+'&itemid='+properties.itemid+'&action=update&newvalue='+values.feedback+'&type=feedback&sesskey='+M.cfg.sesskey,
             on : {
@@ -598,17 +598,17 @@ M.gradereport_grader.classes.ajax.prototype.submit = function(properties, values
  * Uses a synchronous queue to ensure we maintain some sort of order
  *
  * @function
- * @this {M.gradereport_grader.classes.ajax}
+ * @this {M.gradereport_unenrolled.classes.ajax}
  * @param {Int} tid Transaction ID
  * @param {Object} outcome
  * @param {Mixed} args
  */
-M.gradereport_grader.classes.ajax.prototype.submission_outcome = function(tid, outcome, args) {
+M.gradereport_unenrolled.classes.ajax.prototype.submission_outcome = function(tid, outcome, args) {
     // Parse the response as JSON
     try {
         outcome = this.report.Y.JSON.parse(outcome.responseText);
     } catch(e) {
-        var message = M.str.gradereport_grader.ajaxfailedupdate;
+        var message = M.str.gradereport_unenrolled.ajaxfailedupdate;
         message.replace(/\[1\]/, args.type);
         message.replace(/\[2\]/, this.report.users[args.properties.userid]);
 
@@ -616,7 +616,7 @@ M.gradereport_grader.classes.ajax.prototype.submission_outcome = function(tid, o
         return;
     }
 
-    // Quick reference for the grader report
+    // Quick reference for the unenrolled report
     var i = null;
     // Check the outcome
     if (outcome.result == 'success') {
@@ -668,7 +668,7 @@ M.gradereport_grader.classes.ajax.prototype.submission_outcome = function(tid, o
                         // If we are here the grade value of the cell currently being edited has changed !!!!!!!!!
                         // If the user has not actually changed the old value yet we will automatically correct it
                         // otherwise we will prompt the user to choose to use their value or the new value!
-                        if (!this.current.has_changed() || confirm(M.str.gradereport_grader.ajaxfieldchanged)) {
+                        if (!this.current.has_changed() || confirm(M.str.gradereport_unenrolled.ajaxfieldchanged)) {
                             this.current.set_grade(finalgrade);
                             this.current.grade.set('value', finalgrade);
                         }
@@ -710,13 +710,13 @@ M.gradereport_grader.classes.ajax.prototype.submission_outcome = function(tid, o
  * Displays a submission error within a overlay on the cell that failed update
  *
  * @function
- * @this {M.gradereport_grader.classes.ajax}
+ * @this {M.gradereport_unenrolled.classes.ajax}
  * @param {String} message
  * @param {Y.Node} cell
  */
-M.gradereport_grader.classes.ajax.prototype.display_submission_error = function(message, cell) {
+M.gradereport_unenrolled.classes.ajax.prototype.display_submission_error = function(message, cell) {
     var erroroverlay = new this.report.Y.Overlay({
-        headerContent : '<div><strong class="error">'+M.str.gradereport_grader.ajaxerror+'</strong>  <em>'+M.str.gradereport_grader.ajaxclicktoclose+'</em></div>',
+        headerContent : '<div><strong class="error">'+M.str.gradereport_unenrolled.ajaxerror+'</strong>  <em>'+M.str.gradereport_unenrolled.ajaxclicktoclose+'</em></div>',
         bodyContent : message,
         visible : false,
         zIndex : 3
@@ -737,11 +737,11 @@ M.gradereport_grader.classes.ajax.prototype.display_submission_error = function(
  *
  * @class existingfield
  * @constructor
- * @param {M.gradereport_grader.classes.report} report
+ * @param {M.gradereport_unenrolled.classes.report} report
  * @param {Int} userid
  * @param {Int} itemid
  */
-M.gradereport_grader.classes.existingfield = function(ajax, userid, itemid) {
+M.gradereport_unenrolled.classes.existingfield = function(ajax, userid, itemid) {
     this.report = ajax.report;
     this.userid = userid;
     this.itemid = itemid;
@@ -804,20 +804,20 @@ M.gradereport_grader.classes.existingfield = function(ajax, userid, itemid) {
  * Attach the required properties and methods to the existing field class
  * via prototyping
  */
-M.gradereport_grader.classes.existingfield.prototype.userid = null;
-M.gradereport_grader.classes.existingfield.prototype.itemid = null;
-M.gradereport_grader.classes.existingfield.prototype.editfeedback = false;
-M.gradereport_grader.classes.existingfield.prototype.grade = null;
-M.gradereport_grader.classes.existingfield.prototype.oldgrade = null;
-M.gradereport_grader.classes.existingfield.prototype.keyevents = [];
+M.gradereport_unenrolled.classes.existingfield.prototype.userid = null;
+M.gradereport_unenrolled.classes.existingfield.prototype.itemid = null;
+M.gradereport_unenrolled.classes.existingfield.prototype.editfeedback = false;
+M.gradereport_unenrolled.classes.existingfield.prototype.grade = null;
+M.gradereport_unenrolled.classes.existingfield.prototype.oldgrade = null;
+M.gradereport_unenrolled.classes.existingfield.prototype.keyevents = [];
 /**
  * Handles saving of changed on keypress
  *
  * @function
- * @this {M.gradereport_grader.classes.existingfield}
+ * @this {M.gradereport_unenrolled.classes.existingfield}
  * @param {Event} e
  */
-M.gradereport_grader.classes.existingfield.prototype.keypress_enter = function(e) {
+M.gradereport_unenrolled.classes.existingfield.prototype.keypress_enter = function(e) {
     e.preventDefault();
     this.submit();
 };
@@ -825,11 +825,11 @@ M.gradereport_grader.classes.existingfield.prototype.keypress_enter = function(e
  * Handles setting the correct focus if the user presses tab
  *
  * @function
- * @this {M.gradereport_grader.classes.existingfield}
+ * @this {M.gradereport_unenrolled.classes.existingfield}
  * @param {Event} e
  * @param {Bool} ignoreshift
  */
-M.gradereport_grader.classes.existingfield.prototype.keypress_tab = function(e, ignoreshift) {
+M.gradereport_unenrolled.classes.existingfield.prototype.keypress_tab = function(e, ignoreshift) {
     e.preventDefault();
     var next = null;
     if (e.shiftKey) {
@@ -846,10 +846,10 @@ M.gradereport_grader.classes.existingfield.prototype.keypress_tab = function(e, 
  * Handles setting the correct focus when the user presses CTRL+arrow keys
  *
  * @function
- * @this {M.gradereport_grader.classes.existingfield}
+ * @this {M.gradereport_unenrolled.classes.existingfield}
  * @param {Event} e
  */
-M.gradereport_grader.classes.existingfield.prototype.keypress_arrows = function(e) {
+M.gradereport_unenrolled.classes.existingfield.prototype.keypress_arrows = function(e) {
     var next = null;
     switch (e.keyCode) {
         case 37:    // Left
@@ -870,10 +870,10 @@ M.gradereport_grader.classes.existingfield.prototype.keypress_arrows = function(
 /**
  * Move the focus to the node
  * @function
- * @this {M.gradereport_grader.classes.existingfield}
+ * @this {M.gradereport_unenrolled.classes.existingfield}
  * @param {Y.Node} node
  */
-M.gradereport_grader.classes.existingfield.prototype.move_focus = function(node) {
+M.gradereport_unenrolled.classes.existingfield.prototype.move_focus = function(node) {
     if (node) {
         var properties = this.report.get_cell_info(node);
         switch(properties.itemtype) {
@@ -891,10 +891,10 @@ M.gradereport_grader.classes.existingfield.prototype.move_focus = function(node)
  * Checks if the values for the field have changed
  *
  * @function
- * @this {M.gradereport_grader.classes.existingfield}
+ * @this {M.gradereport_unenrolled.classes.existingfield}
  * @return {Bool}
  */
-M.gradereport_grader.classes.existingfield.prototype.has_changed = function() {
+M.gradereport_unenrolled.classes.existingfield.prototype.has_changed = function() {
     if (this.editfeedback) {
         return (this.grade.get('value') !== this.oldgrade || this.feedback.get('value') !== this.oldfeedback);
     }
@@ -904,9 +904,9 @@ M.gradereport_grader.classes.existingfield.prototype.has_changed = function() {
  * Submits any changes and then updates the fields accordingly
  *
  * @function
- * @this {M.gradereport_grader.classes.existingfield}
+ * @this {M.gradereport_unenrolled.classes.existingfield}
  */
-M.gradereport_grader.classes.existingfield.prototype.submit = function() {
+M.gradereport_unenrolled.classes.existingfield.prototype.submit = function() {
     if (!this.has_changed()) {
         return;
     }
@@ -943,11 +943,11 @@ M.gradereport_grader.classes.existingfield.prototype.submit = function() {
  *
  * @class textfield
  * @constructor
- * @this {M.gradereport_grader.classes.textfield}
- * @param {M.gradereport_grader.classes.report} report
+ * @this {M.gradereport_unenrolled.classes.textfield}
+ * @param {M.gradereport_unenrolled.classes.report} report
  * @param {Y.Node} node
  */
-M.gradereport_grader.classes.textfield = function(report, node) {
+M.gradereport_unenrolled.classes.textfield = function(report, node) {
     this.report = report;
     this.node = node;
     this.gradespan = node.one('.gradevalue');
@@ -964,23 +964,23 @@ M.gradereport_grader.classes.textfield = function(report, node) {
 /**
  * Extend the textfield class with the following methods and properties
  */
-M.gradereport_grader.classes.textfield.prototype.keyevents = [];
-M.gradereport_grader.classes.textfield.prototype.editable = false;
-M.gradereport_grader.classes.textfield.prototype.gradetype = null;
-M.gradereport_grader.classes.textfield.prototype.grade = null;
-M.gradereport_grader.classes.textfield.prototype.report = null;
-M.gradereport_grader.classes.textfield.prototype.node = null;
-M.gradereport_grader.classes.textfield.prototype.gradespam = null;
-M.gradereport_grader.classes.textfield.prototype.inputdiv = null;
-M.gradereport_grader.classes.textfield.prototype.editfeedback = false;
+M.gradereport_unenrolled.classes.textfield.prototype.keyevents = [];
+M.gradereport_unenrolled.classes.textfield.prototype.editable = false;
+M.gradereport_unenrolled.classes.textfield.prototype.gradetype = null;
+M.gradereport_unenrolled.classes.textfield.prototype.grade = null;
+M.gradereport_unenrolled.classes.textfield.prototype.report = null;
+M.gradereport_unenrolled.classes.textfield.prototype.node = null;
+M.gradereport_unenrolled.classes.textfield.prototype.gradespam = null;
+M.gradereport_unenrolled.classes.textfield.prototype.inputdiv = null;
+M.gradereport_unenrolled.classes.textfield.prototype.editfeedback = false;
 /**
  * Replaces the cell contents with the controls to enable editing
  *
  * @function
- * @this {M.gradereport_grader.classes.textfield}
- * @return {M.gradereport_grader.classes.textfield}
+ * @this {M.gradereport_unenrolled.classes.textfield}
+ * @return {M.gradereport_unenrolled.classes.textfield}
  */
-M.gradereport_grader.classes.textfield.prototype.replace = function() {
+M.gradereport_unenrolled.classes.textfield.prototype.replace = function() {
     this.set_grade(this.get_grade());
     if (this.editfeedback) {
         this.set_feedback(this.get_feedback());
@@ -993,10 +993,10 @@ M.gradereport_grader.classes.textfield.prototype.replace = function() {
 /**
  * Commits the changes within a cell and returns a result object of new + old values
  * @function
- * @this {M.gradereport_grader.classes.textfield}
+ * @this {M.gradereport_unenrolled.classes.textfield}
  * @return {Object}
  */
-M.gradereport_grader.classes.textfield.prototype.commit = function() {
+M.gradereport_unenrolled.classes.textfield.prototype.commit = function() {
     // Produce an anonymous result object contianing all values
     var result = (function(field){
         field.editable = false;
@@ -1033,9 +1033,9 @@ M.gradereport_grader.classes.textfield.prototype.commit = function() {
 /**
  * Reverts a cell back to its static contents
  * @function
- * @this {M.gradereport_grader.classes.textfield}
+ * @this {M.gradereport_unenrolled.classes.textfield}
  */
-M.gradereport_grader.classes.textfield.prototype.revert = function() {
+M.gradereport_unenrolled.classes.textfield.prototype.revert = function() {
     this.node.replaceChild(this.gradespan, this.inputdiv);
     for (var i in this.keyevents) {
         if (this.keyevents[i]) {
@@ -1049,10 +1049,10 @@ M.gradereport_grader.classes.textfield.prototype.revert = function() {
  * Gets the grade for current cell
  *
  * @function
- * @this {M.gradereport_grader.classes.textfield}
+ * @this {M.gradereport_unenrolled.classes.textfield}
  * @return {Mixed}
  */
-M.gradereport_grader.classes.textfield.prototype.get_grade = function() {
+M.gradereport_unenrolled.classes.textfield.prototype.get_grade = function() {
     if (this.editable) {
         return this.grade.get('value');
     }
@@ -1061,10 +1061,10 @@ M.gradereport_grader.classes.textfield.prototype.get_grade = function() {
 /**
  * Sets the grade for the current cell
  * @function
- * @this {M.gradereport_grader.classes.textfield}
+ * @this {M.gradereport_unenrolled.classes.textfield}
  * @param {Mixed} value
  */
-M.gradereport_grader.classes.textfield.prototype.set_grade = function(value) {
+M.gradereport_unenrolled.classes.textfield.prototype.set_grade = function(value) {
     if (!this.editable) {
         if (value == '-') {
             value = '';
@@ -1080,10 +1080,10 @@ M.gradereport_grader.classes.textfield.prototype.set_grade = function(value) {
 /**
  * Gets the feedback for the current cell
  * @function
- * @this {M.gradereport_grader.classes.textfield}
+ * @this {M.gradereport_unenrolled.classes.textfield}
  * @return {String}
  */
-M.gradereport_grader.classes.textfield.prototype.get_feedback = function() {
+M.gradereport_unenrolled.classes.textfield.prototype.get_feedback = function() {
     if (this.editable) {
         return this.feedback.get('value');
     }
@@ -1096,10 +1096,10 @@ M.gradereport_grader.classes.textfield.prototype.get_feedback = function() {
 /**
  * Sets the feedback for the current cell
  * @function
- * @this {M.gradereport_grader.classes.textfield}
+ * @this {M.gradereport_unenrolled.classes.textfield}
  * @param {Mixed} value
  */
-M.gradereport_grader.classes.textfield.prototype.set_feedback = function(value) {
+M.gradereport_unenrolled.classes.textfield.prototype.set_feedback = function(value) {
     if (!this.editable) {
         this.feedback.set('value', value);
     } else {
@@ -1110,10 +1110,10 @@ M.gradereport_grader.classes.textfield.prototype.set_feedback = function(value) 
 /**
  * Checks if the current cell has changed at all
  * @function
- * @this {M.gradereport_grader.classes.textfield}
+ * @this {M.gradereport_unenrolled.classes.textfield}
  * @return {Bool}
  */
-M.gradereport_grader.classes.textfield.prototype.has_changed = function() {
+M.gradereport_unenrolled.classes.textfield.prototype.has_changed = function() {
     // If its not editable it has not changed
     if (!this.editable) {
         return false;
@@ -1132,9 +1132,9 @@ M.gradereport_grader.classes.textfield.prototype.has_changed = function() {
  * against the textfield
  *
  * @function
- * @this {M.gradereport_grader.classes.textfield}
+ * @this {M.gradereport_unenrolled.classes.textfield}
  */
-M.gradereport_grader.classes.textfield.prototype.attach_key_events = function() {
+M.gradereport_unenrolled.classes.textfield.prototype.attach_key_events = function() {
     var a = this.report.ajax;
     // Setup the default key events for tab and enter
     if (this.editfeedback) {
@@ -1159,19 +1159,19 @@ M.gradereport_grader.classes.textfield.prototype.attach_key_events = function() 
  *
  * @class scalefield
  * @constructor
- * @inherits M.gradereport_grader.classes.textfield
- * @base M.gradereport_grader.classes.textfield
- * @this {M.gradereport_grader.classes.scalefield}
- * @param {M.gradereport_grader.classes.report} report
+ * @inherits M.gradereport_unenrolled.classes.textfield
+ * @base M.gradereport_unenrolled.classes.textfield
+ * @this {M.gradereport_unenrolled.classes.scalefield}
+ * @param {M.gradereport_unenrolled.classes.report} report
  * @param {Y.Node} node
  */
-M.gradereport_grader.classes.scalefield = function(report, node) {
+M.gradereport_unenrolled.classes.scalefield = function(report, node) {
     this.report = report;
     this.node = node;
     this.gradespan = node.one('.gradevalue');
     this.inputdiv = this.report.Y.Node.create('<div></div>');
     this.editfeedback = this.report.ajax.showquickfeedback;
-    this.grade = this.report.Y.Node.create('<select type="text" class="text" /><option value="-1">'+M.str.gradereport_grader.ajaxchoosescale+'</option></select>');
+    this.grade = this.report.Y.Node.create('<select type="text" class="text" /><option value="-1">'+M.str.gradereport_unenrolled.ajaxchoosescale+'</option></select>');
     this.gradetype = 'scale';
     this.inputdiv.append(this.grade);
     if (this.editfeedback) {
@@ -1193,7 +1193,7 @@ M.gradereport_grader.classes.scalefield = function(report, node) {
 /**
  * @property {Array} scale
  */
-M.gradereport_grader.classes.scalefield.prototype.scale = [];
+M.gradereport_unenrolled.classes.scalefield.prototype.scale = [];
 /**
  * Extend the scalefield with the functions from the textfield
  */
@@ -1202,10 +1202,10 @@ M.gradereport_grader.classes.scalefield.prototype.scale = [];
  * scales select box
  *
  * @function
- * @this {M.gradereport_grader.classes.scalefield}
+ * @this {M.gradereport_unenrolled.classes.scalefield}
  * @return {Int} the scale id
  */
-M.gradereport_grader.classes.scalefield.prototype.get_grade = function(){
+M.gradereport_unenrolled.classes.scalefield.prototype.get_grade = function(){
     if (this.editable) {
         // Return the scale value
         return this.grade.all('option').item(this.grade.get('selectedIndex')).get('value');
@@ -1225,10 +1225,10 @@ M.gradereport_grader.classes.scalefield.prototype.get_grade = function(){
  * within the scale select box
  *
  * @function
- * @this {M.gradereport_grader.classes.scalefield}
+ * @this {M.gradereport_unenrolled.classes.scalefield}
  * @param {String} value
  */
-M.gradereport_grader.classes.scalefield.prototype.set_grade = function(value) {
+M.gradereport_unenrolled.classes.scalefield.prototype.set_grade = function(value) {
     if (!this.editable) {
         if (value == '-') {
             value = '-1';
@@ -1250,10 +1250,10 @@ M.gradereport_grader.classes.scalefield.prototype.set_grade = function(value) {
 /**
  * Checks if the current cell has changed at all
  * @function
- * @this {M.gradereport_grader.classes.scalefield}
+ * @this {M.gradereport_unenrolled.classes.scalefield}
  * @return {Bool}
  */
-M.gradereport_grader.classes.scalefield.prototype.has_changed = function() {
+M.gradereport_unenrolled.classes.scalefield.prototype.has_changed = function() {
     if (!this.editable) {
         return false;
     }
@@ -1273,8 +1273,8 @@ M.gradereport_grader.classes.scalefield.prototype.has_changed = function() {
  * Manually extend the scalefield class with the properties and methods of the
  * textfield class that have not been defined
  */
-for (var i in M.gradereport_grader.classes.textfield.prototype) {
-    if (!M.gradereport_grader.classes.scalefield.prototype[i]) {
-        M.gradereport_grader.classes.scalefield.prototype[i] = M.gradereport_grader.classes.textfield.prototype[i];
+for (var i in M.gradereport_unenrolled.classes.textfield.prototype) {
+    if (!M.gradereport_unenrolled.classes.scalefield.prototype[i]) {
+        M.gradereport_unenrolled.classes.scalefield.prototype[i] = M.gradereport_unenrolled.classes.textfield.prototype[i];
     }
 }

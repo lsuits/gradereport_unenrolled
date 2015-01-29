@@ -15,9 +15,9 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * This file receives ajax callbacks for the grader report
+ * This file receives ajax callbacks for the unenrolled report
  *
- * @package   gradereport_grader
+ * @package   gradereport_unenrolled
  * @copyright 2008 Nicolas Connault
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -25,8 +25,8 @@
 require_once '../../../config.php';
 require_once $CFG->libdir.'/gradelib.php';
 require_once $CFG->dirroot.'/grade/lib.php';
-// require_once $CFG->dirroot.'/grade/report/grader/ajaxlib.php';
-// require_once $CFG->dirroot.'/grade/report/grader/lib.php';
+// require_once $CFG->dirroot.'/grade/report/unenrolled/ajaxlib.php';
+// require_once $CFG->dirroot.'/grade/report/unenrolled/lib.php';
 
 $courseid = required_param('id', PARAM_INT);                   // course id
 $userid = optional_param('userid', false, PARAM_INT);
@@ -56,7 +56,7 @@ switch ($action) {
             }
 
             /**
-             * Code copied from grade/report/grader/lib.php line 187+
+             * Code copied from grade/report/unenrolled/lib.php line 187+
              */
             $warnings = array();
             $finalvalue = null;

@@ -1,4 +1,4 @@
-YUI.add('moodle-gradereport_grader-scrollview', function (Y, NAME) {
+YUI.add('moodle-gradereport_unenrolled-scrollview', function (Y, NAME) {
 
 // This file is part of Moodle - http://moodle.org/
 //
@@ -17,16 +17,16 @@ YUI.add('moodle-gradereport_grader-scrollview', function (Y, NAME) {
 
 
 /**
- * Scrollview for grader table.
+ * Scrollview for unenrolled table.
  *
- * @package   gradereport_grader
+ * @package   gradereport_unenrolled
  * @copyright 2013 NetSpot Pty Ltd
  * @author    Adam Olley <adam.olley@netspot.com.au>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-M.gradereport_grader = M.gradereport_grader || {};
-M.gradereport_grader.scrollview = {
+M.gradereport_unenrolled = M.gradereport_unenrolled || {};
+M.gradereport_unenrolled.scrollview = {
 
     /** Selectors. */
     SELECTORS: {

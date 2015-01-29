@@ -15,23 +15,23 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Outputs navigation tabs for the grader report
+ * Outputs navigation tabs for the unenrolled report
  *
- * @package   gradereport_grader
+ * @package   gradereport_unenrolled
  * @copyright 2007 2009 Nicolas Connault
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
     $row = $tabs = array();
     $tabcontext = context_course::instance($COURSE->id);
-    $row[] = new tabobject('graderreport',
-                           $CFG->wwwroot.'/grade/report/grader/index.php?id='.$courseid,
-                           get_string('pluginname', 'gradereport_grader'));
+    $row[] = new tabobject('unenrolledreport',
+                           $CFG->wwwroot.'/grade/report/unenrolled/index.php?id='.$courseid,
+                           get_string('pluginname', 'gradereport_unenrolled'));
     if (has_capability('moodle/grade:manage',$tabcontext ) ||
         has_capability('moodle/grade:edit', $tabcontext) ||
-        has_capability('gradereport/grader:view', $tabcontext)) {
+        has_capability('gradereport/unenrolled:view', $tabcontext)) {
         $row[] = new tabobject('preferences',
-                               $CFG->wwwroot.'/grade/report/grader/preferences.php?id='.$courseid,
+                               $CFG->wwwroot.'/grade/report/unenrolled/preferences.php?id='.$courseid,
                                get_string('myreportpreferences', 'grades'));
     }
 

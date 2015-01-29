@@ -1,4 +1,4 @@
-.path-grade-report-grader .flexible th {
+.path-grade-report-unenrolled .flexible th {
     white-space: normal;
 }
 .gradestable {
@@ -77,42 +77,42 @@ table#user-grades {
     background-color: transparent;
     border-style: solid;
     border-width: 1px;
-    margin: 20px 0 0;
-}
-.path-grade-report-grader #overDiv table {
     margin: 0;
 }
-.path-grade-report-grader #overDiv table td.feedback {
+.path-grade-report-unenrolled #overDiv table {
+    margin: 0;
+}
+.path-grade-report-unenrolled #overDiv table td.feedback {
     border: 0;
 }
-.path-grade-report-grader #overDiv .feedback {
+.path-grade-report-unenrolled #overDiv .feedback {
     font-size: 70%;
     background-color: #ABF;
     color: #000;
     font-family: Verdana;
     font-weight: 400;
 }
-.path-grade-report-grader #overDiv .caption {
+.path-grade-report-unenrolled #overDiv .caption {
     font-size: 70%;
     background-color: #56C;
     color: #CCF;
     font-family: Arial;
     font-weight: 700;
 }
-.path-grade-report-grader #overDiv .intersection {
+.path-grade-report-unenrolled #overDiv .intersection {
     font-size: 70%;
     background-color: #ABF;
     color: #000;
     font-family: Verdana;
     font-weight: 400;
 }
-.path-grade-report-grader #overDiv .intersectioncaption {
+.path-grade-report-unenrolled #overDiv .intersectioncaption {
     background-color: #56C;
     color: #CCF;
     font-family: Arial;
     font-weight: 700;
 }
-.path-grade-report-grader div.submit {
+.path-grade-report-unenrolled div.submit {
     margin-top: 20px;
     text-align: center;
 }
@@ -141,10 +141,10 @@ table#user-grades td.topleft {
     border-style: solid;
     border-width: 0 1px;
 }
-.path-grade-report-grader td,.path-grade-report-grader th {
+.path-grade-report-unenrolled td,.path-grade-report-unenrolled th {
     border-color: #CECECE;
 }
-.path-grade-report-grader table#participants th {
+.path-grade-report-unenrolled table#participants th {
     vertical-align: top;
     width: auto;
 }
@@ -164,7 +164,7 @@ table#user-grades th.courseitem {
     border-style: solid;
     border-width: 1px;
 }
-div.gradertoggle {
+div.unenrolledtoggle {
     display: inline;
     margin-left: 20px;
 }
@@ -188,37 +188,42 @@ table#user-grades .quickfeedback {
     margin-left: 0;
     margin-right: 10px;
 }
-.path-grade-report-grader #siteconfiglink {
+.path-grade-report-unenrolled #siteconfiglink {
     text-align: right;
 }
 table#user-grades .datesubmitted {
     font-size: .7em;
 }
-table#user-grades td.cell {
+table#user-grades td.cell, table#user-grades th.cell {
     padding-left: 5px;
     padding-right: 5px;
     vertical-align: middle;
 }
-.path-grade-report-grader table {
+
+.path-grade-report-unenrolled .flexible th a {
+   vertical-align: -1em;
+}
+
+.path-grade-report-unenrolled table {
     border-collapse: collapse;
     background-color: #fff;
     border-color: #cecece;
 }
-.path-grade-report-grader th {
+.path-grade-report-unenrolled th {
     padding: 1px 10px;
 }
-.path-grade-report-grader span.inclusion-links {
+.path-grade-report-unenrolled span.inclusion-links {
     margin: 0 5px 0 10px;
 }
 table#user-grades .item {
     background-color: #e9e9e9;
 }
-.path-grade-report-grader table tr.odd th.header {
+.path-grade-report-unenrolled table tr.odd th.header {
     background-color: #efefef;
     background-image: none;
     border-width: 0 0 1px;
 }
-.path-grade-report-grader table tr.heading th.header {
+.path-grade-report-unenrolled table tr.heading th.header {
     border-top: 1px solid #cecece;
 }
 table#user-grades tr.heading th.categoryitem,
@@ -230,34 +235,34 @@ table#user-grades th.category.header.catlevel1 {
     border-style: solid;
     border-width: 1px 1px 0 0;
 }
-.path-grade-report-grader div.left_scroller th.user a {
+.path-grade-report-unenrolled div.left_scroller th.user a {
     vertical-align: middle;
     margin: 0;
     padding: 0;
 }
 table#user-grades th.categoryitem,
 table#user-grades th.courseitem,
-.path-grade-report-grader table td.topleft {
+.path-grade-report-unenrolled table td.topleft {
     vertical-align: bottom;
     border-color: #cecece #cecece #000;
     border-style: solid;
     border-width: 0 1px 1px;
 }
-.path-grade-report-grader .left_scroller table td.topleft {
+.path-grade-report-unenrolled .left_scroller table td.topleft {
     background-color: #fff;
     border-bottom-color: #cecece;
 }
 table#user-grades td.topleft {
     background-color: #fff;
 }
-.path-grade-report-grader th.user img.userpicture {
+.path-grade-report-unenrolled th.user img.userpicture {
     border: 3px double #cecece;
     vertical-align: top;
     width: 2.7em;
     height: 2.7em;
     margin-right: 10px;
 }
-.path-grade-report-grader a.quickedit {
+.path-grade-report-unenrolled a.quickedit {
     line-height: 1em;
     display: block;
     float: right;
@@ -266,56 +271,56 @@ table#user-grades td.topleft {
     background-color: transparent;
     margin: .1em 0 0;
 }
-.path-grade-report-grader a.quickedit2 {
+.path-grade-report-unenrolled a.quickedit2 {
     display: block;
     float: right;
     clear: none;
     background-color: transparent;
     margin: 1.3em 0 0;
 }
-.path-grade-report-grader table#quick_edit {
+.path-grade-report-unenrolled table#quick_edit {
     border: 1px solid #cecece;
     margin: 0 auto;
 }
-.path-grade-report-grader table#quick_edit td {
+.path-grade-report-unenrolled table#quick_edit td {
     vertical-align: middle;
     border: 1px solid #cecece;
     text-align: left;
     margin: 0;
     padding: 5px;
 }
-.path-grade-report-grader table#quick_edit td img {
+.path-grade-report-unenrolled table#quick_edit td img {
     border: 3px double #cecece;
     vertical-align: middle;
     padding: 0;
 }
-.path-grade-report-grader td input.text {
+.path-grade-report-unenrolled td input.text {
     border: 1px solid #666;
     width: auto;
     margin: 0;
     padding: 0;
 }
-.path-grade-report-grader td input.submit {
+.path-grade-report-unenrolled td input.submit {
     margin: 10px 10px 0px 10px;
 }
-.path-grade-report-grader table#quick_edit td.fullname {
+.path-grade-report-unenrolled table#quick_edit td.fullname {
     border-left: 0;
     padding-left: 5px;
 }
-.path-grade-report-grader table#quick_edit td.picture {
+.path-grade-report-unenrolled table#quick_edit td.picture {
     border-right: 0;
 }
-.path-grade-report-grader table#quick_edit td.finalgrade input {
+.path-grade-report-unenrolled table#quick_edit td.finalgrade input {
     width: 5em;
 }
-.path-grade-report-grader h1 {
+.path-grade-report-unenrolled h1 {
     text-align: center;
     clear: both;
 }
-.path-grade-report-grader input.center {
+.path-grade-report-unenrolled input.center {
     margin: 10px auto 0;
 }
-.path-grade-report-grader .lefttbody {
+.path-grade-report-unenrolled .lefttbody {
     width: auto;
     vertical-align: middle;
 }
@@ -323,41 +328,41 @@ table#user-grades th.fixedcolumn {
     border: 1px solid #cecece;
     vertical-align: middle;
 }
-.path-grade-report-grader table#fixed_column th {
+.path-grade-report-unenrolled table#fixed_column th {
     border: 1px solid #cecece;
     vertical-align: middle;
     border-right-color: #000;
 }
-.path-grade-report-grader table#fixed_column th.user{
+.path-grade-report-unenrolled table#fixed_column th.user{
     border-right-color: #cecece;
 }
-.path-grade-report-grader table#fixed_column {
+.path-grade-report-unenrolled table#fixed_column {
     padding-top: 20px;
     border-top: 1px solid #cecece;
     background-color: #fff;
 }
-.path-grade-report-grader .left_scroller {
+.path-grade-report-unenrolled .left_scroller {
     float: left;
     clear: none;
     padding-top: 20px;
 }
-.path-grade-report-grader.dir-rtl .left_scroller {
+.path-grade-report-unenrolled.dir-rtl .left_scroller {
     float: right;
 }
-.path-grade-report-grader .right_scroller {
+.path-grade-report-unenrolled .right_scroller {
     width: auto;
     clear: none;
     overflow-x: scroll;
 }
-.path-grade-report-grader table tr.avg,
-.path-grade-report-grader table tr.groupavg td,
-.path-grade-report-grader table tr.avg td,
-.path-grade-report-grader table tr.groupavg th,
-.path-grade-report-grader table tr.avg th,
-.path-grade-report-grader table tr.controls_row,
-.path-grade-report-grader table tr.controls_row th,
-.path-grade-report-grader table tr.range_row,
-.path-grade-report-grader table tr.range_row th,
+.path-grade-report-unenrolled table tr.avg,
+.path-grade-report-unenrolled table tr.groupavg td,
+.path-grade-report-unenrolled table tr.avg td,
+.path-grade-report-unenrolled table tr.groupavg th,
+.path-grade-report-unenrolled table tr.avg th,
+.path-grade-report-unenrolled table tr.controls_row,
+.path-grade-report-unenrolled table tr.controls_row th,
+.path-grade-report-unenrolled table tr.range_row,
+.path-grade-report-unenrolled table tr.range_row th,
 div.right_scroller tr {
     height: 2em;
 }
@@ -365,75 +370,73 @@ table#user-grades tr.groupavg td.cell,
 tr.groupavg th.header {
     background-color: #efffef;
 }
-.path-grade-report-grader form td.excluded {
+.path-grade-report-unenrolled form td.excluded {
     color: red;
 }
-.path-grade-report-grader .excludedfloater {
+.path-grade-report-unenrolled .excludedfloater {
     font-weight: 700;
     color: red;
     font-size: 9px;
     float: left;
 }
-.path-grade-report-grader span.gradepass {
+.path-grade-report-unenrolled span.gradepass {
     color: #298721;
 }
-.path-grade-report-grader span.gradefail {
+.path-grade-report-unenrolled span.gradefail {
     color: #890d0d;
 }
-.path-grade-report-grader .gradeweight {
+.path-grade-report-unenrolled .gradeweight {
     color: #461d7c;
     font-weight: 700;
 }
-.path-grade-report-grader td select {
+.path-grade-report-unenrolled td select {
     font-size: 100%;
     padding: 0;
 }
-.path-grade-report-grader .right_scroller td select {
+.path-grade-report-unenrolled .right_scroller td select {
     font-size: 86%;
     padding: 0;
 }
-.path-grade-report-grader tr.avg,
-.path-grade-report-grader tr.controls,
-.path-grade-report-grader td.controls,
-.path-grade-report-grader th.controls,
-.path-grade-report-grader tr.groupavg,
-.path-grade-report-grader tr.range,
-.path-grade-report-grader th.range,
-.path-grade-report-grader td.range,
-.path-grade-report-grader tr.heading th.range {
-    height: 2em!important;
+.path-grade-report-unenrolled tr.avg,
+.path-grade-report-unenrolled tr.controls,
+.path-grade-report-unenrolled td.controls,
+.path-grade-report-unenrolled th.controls,
+.path-grade-report-unenrolled tr.groupavg,
+.path-grade-report-unenrolled tr.range,
+.path-grade-report-unenrolled th.range,
+.path-grade-report-unenrolled td.range,
+.path-grade-report-unenrolled tr.heading th.range {
     white-space: nowrap;
 }
-.path-grade-report-grader .heading_name_row th {
+.path-grade-report-unenrolled .heading_name_row th {
     white-space: nowrap;
-    width: 2000px;
 }
 
 /*MDL-21088 - IE 7 ignores nowraps on tds or ths so we put a span within it with a nowrap on it*/
-.path-grade-report-grader heading_name_row th span {
+.path-grade-report-unenrolled heading_name_row th span {
     white-space: nowrap;
 }
-.path-grade-report-grader .grade_icons img.ajax {
+.path-grade-report-unenrolled .grade_icons img.ajax {
     float: right;
 }
-.path-grade-report-grader .gradestable th.user,
-.path-grade-report-grader .gradestable th.range,
-.path-grade-report-grader .flexible th,
-.path-grade-report-grader .flexible td,
-.path-grade-report-grader .flexible th a,
-.path-grade-report-grader .flexible td a,
-.path-grade-report-grader .gradestable th.range,
-.path-grade-report-grader td {
+.path-grade-report-unenrolled .gradestable th.user,
+.path-grade-report-unenrolled .gradestable th.range,
+.path-grade-report-unenrolled .flexible th,
+.path-grade-report-unenrolled .flexible td,
+.path-grade-report-unenrolled .flexible th a,
+.path-grade-report-unenrolled .flexible td a,
+.path-grade-report-unenrolled .gradestable th.range,
+.path-grade-report-unenrolled td {
     white-space: nowrap;
 }
 table#user-grades .catlevel1,
 table#user-grades .r1,
-.path-grade-report-grader table tr.even td.cell,
-.path-grade-report-grader table tr.even th {
+.path-grade-report-unenrolled table tr.even td.cell,
+.path-grade-report-unenrolled table tr.even th {
     background-color: #fff;
 }
 table#user-grades .catlevel3,
-.path-grade-report-grader table tr.odd td.cell {
+.path-grade-report-unenrolled table tr.odd td.cell {
     background-color: #efefef;
 }
 table#fixed_column tr.odd th ,
@@ -470,55 +473,55 @@ table#user-grades .heading td {
 }
 table#user-grades td.userfield,
 table#user-grades th,
-.path-grade-report-grader div.gradeparent,
-.path-grade-report-grader .ie6 form,
+.path-grade-report-unenrolled div.gradeparent,
+.path-grade-report-unenrolled .ie6 form,
 table#user-grades td.ajax {
     text-align: left;
 }
 .dir-rtl table#user-grades td.userfield,
 .dir-rtl table#user-grades th,
-.path-grade-report-grader.dir-rtl  div.gradeparent,
-.path-grade-report-grader.dir-rtl  .ie6 form,
+.path-grade-report-unenrolled.dir-rtl  div.gradeparent,
+.path-grade-report-unenrolled.dir-rtl  .ie6 form,
 .dir-rtl table#user-grades td.ajax {
     text-align: right;
 }
-.path-grade-report-grader .gradeparent {
+.path-grade-report-unenrolled .gradeparent {
     overflow: auto;
 }
 table#user-grades td.controls,
-.path-grade-report-grader table tr.avg .cell,
-.path-grade-report-grader table tr.range .cell {
+.path-grade-report-unenrolled table tr.avg .cell,
+.path-grade-report-unenrolled table tr.range .cell {
     background-color: #f3ead8;
 }
-.path-grade-report-grader div.left_scroller tr,
-.path-grade-report-grader div.right_scroller tr,
-.path-grade-report-grader div.left_scroller td,
-.path-grade-report-grader div.right_scroller td,
-.path-grade-report-grader div.left_scroller th,
-.path-grade-report-grader div.right_scroller th {
+.path-grade-report-unenrolled div.left_scroller tr,
+.path-grade-report-unenrolled div.right_scroller tr,
+.path-grade-report-unenrolled div.left_scroller td,
+.path-grade-report-unenrolled div.right_scroller td,
+.path-grade-report-unenrolled div.left_scroller th,
+.path-grade-report-unenrolled div.right_scroller th {
     height: 4.5em;
     font-size: 10px;
 }
-.path-grade-report-grader table th.user,
-.path-grade-report-grader table td.userfield {
+.path-grade-report-unenrolled table th.user,
+.path-grade-report-unenrolled table td.userfield {
     text-align: left;
     vertical-align: middle;
 }
-.path-grade-report-grader .usersuspended a:link,
-.path-grade-report-grader .usersuspended a:visited {
+.path-grade-report-unenrolled .usersuspended a:link,
+.path-grade-report-unenrolled .usersuspended a:visited {
     color: #666;
 }
-.path-grade-report-grader table th.usersuspended img.usersuspendedicon {
+.path-grade-report-unenrolled table th.usersuspended img.usersuspendedicon {
     vertical-align: text-bottom;
     margin-left: .45em;
 }
-.path-grade-report-grader .grade_icons {
+.path-grade-report-unenrolled .grade_icons {
     margin-bottom: .3em;
 }
-.path-grade-report-grader tr.controls .grade_icons {
+.path-grade-report-unenrolled tr.controls .grade_icons {
     margin-bottom: 0;
 }
-.path-grade-report-grader .yui3-overlay {
+.path-grade-report-unenrolled .yui3-overlay {
     background-color: #FFEE69;
     border-color: #D4C237 #A6982B #A6982B;
     border-style: solid;
@@ -527,53 +530,53 @@ table#user-grades td.controls,
     padding: 2px 5px;
     font-size: 0.7em;
 }
-.path-grade-report-grader .yui3-overlay .fullname {
+.path-grade-report-unenrolled .yui3-overlay .fullname {
     color: #5F3E00;
     font-weight: bold;
 }
-.path-grade-report-grader .yui3-overlay .itemname {
+.path-grade-report-unenrolled .yui3-overlay .itemname {
     color: #194F3E;
     font-weight: bold;
 }
-.path-grade-report-grader .yui3-overlay .feedback {
+.path-grade-report-unenrolled .yui3-overlay .feedback {
     color: #5F595E;
 }
 /* table#user-grades td */
-/* .grader-report-grader table#user-grades td .yui-panel div.hd { */
-.path-grade-report-grader #tooltipPanel {
+/* .unenrolled-report-unenrolled table#user-grades td .yui-panel div.hd { */
+.path-grade-report-unenrolled #tooltipPanel {
     text-align: left;
 }
-.path-grade-report-grader .yui3-overlay a.container-close {
+.path-grade-report-unenrolled .yui3-overlay a.container-close {
     margin-top: -3px;
 }
-.path-grade-report-grader #hiddentooltiproot,
+.path-grade-report-unenrolled #hiddentooltiproot,
 .tooltipDiv {
     display: none;
 }
-.path-grade-report-grader.ie .right_scroller {
+.path-grade-report-unenrolled.ie .right_scroller {
     overflow-y: hidden;
 }
-.path-grade-report-grader.ie table#fixed_column th {
+.path-grade-report-unenrolled.ie table#fixed_column th {
     height: 4.5em;
 }
-.path-grade-report-grader.ie table#fixed_column tr.avg th {
+.path-grade-report-unenrolled.ie table#fixed_column tr.avg th {
     height: 2.1em;
 }
-.path-grade-report-grader.ie div.left_scroller td {
+.path-grade-report-unenrolled.ie div.left_scroller td {
     height: 4.5em;
 }
-.path-grade-report-grader.ie6 div.right_scroller {
+.path-grade-report-unenrolled.ie6 div.right_scroller {
     margin-top: 4em;
     width: auto;
     position: absolute;
 }
-.path-grade-report-grader.ie6 .excludedfloater {
+.path-grade-report-unenrolled.ie6 .excludedfloater {
     font-size: 7px;
 }
 
 /** MDL-40071 **/
-.path-grade-report-grader.dir-rtl table th.user,
-.path-grade-report-grader.dir-rtl table td.userfield {
+.path-grade-report-unenrolled.dir-rtl table th.user,
+.path-grade-report-unenrolled.dir-rtl table td.userfield {
     text-align: right;
 }
 
@@ -583,14 +586,340 @@ table#user-grades td.controls,
 .dir-rtl table#user-grades th.user {
     text-align: right;
 }
-.path-grade-report-grader.dir-rtl th.user img.userpicture {
+.path-grade-report-unenrolled.dir-rtl th.user img.userpicture {
     margin-left: 0.5em;
 }
 
-.path-grade-report-grader .yui3-scrollview-scrollbar {
+.path-grade-report-unenrolled .yui3-scrollview-scrollbar {
     opacity: 1 !important;
 }
 
-.path-grade-report-grader .yui3-scrollview-scrollbar-horiz {
+.path-grade-report-unenrolled .yui3-scrollview-scrollbar-horiz {
     bottom: -2px;
+}
+
+
+/** Grades **/
+
+#page-grade-index .grades .header {
+   font-weight: bold;
+   font-size: 0.7em;
+}
+
+#grade-aggregation-help dt {
+   font-weight: bold;
+}
+
+#grade-aggregation-help dd.example {
+   font-style: italic;
+}
+
+#grade-aggregation-help code {
+   font-style: normal;
+}
+
+#page-grade-index .grades {
+   border-color: #ccc;
+}
+
+#page-grade-index .grades td {
+   border-color: #ccc;
+}
+
+#page-grade-index .grades .r0 {
+   background-color: #fff;
+}
+
+#page-grade-index .grades .r1 {
+   background-color: #f0f0f0;
+}
+
+td.grade div.overridden {
+   background-color: #dddddd;
+}
+
+.path-grade-report-unenrolled table#user-grades td.cell span.gradepass {
+   background-color: #c2ebbd;
+}
+
+.path-grade-report-unenrolled table#user-grades td.cell span.gradefail {
+   background-color: #ebc4bd;
+}
+
+.path-grade-report-unenrolled table#user-grades td.clickable {
+   cursor: pointer;
+}
+
+.path-grade-report-unenrolled .unenrolledreportoverlay {
+   background-color: #eeeeee;
+   border: 1px solid #ccc;
+   padding: 5px;
+   font-size: 80%;
+}
+
+.path-grade-report-unenrolled .unenrolledreportoverlay div.feedback {
+}  
+
+.path-grade-edit-tree .moving {
+   background-color: #e8eef7;
+}
+
+.path-grade-edit-tree .gradetreebox {
+   width: 97.5%;
+   padding-bottom: 15px;
+}
+
+.path-grade-edit-scale .scale_options,
+#page-admin-grade-edit-scale-index .scale_options {
+   font-size: 0.7em;
+}
+
+.gradetreebox {
+   margin: auto;
+   width: 100%;
+   font-size: 90%;
+}
+
+.gradetreebox .smallicon {
+   width: 10px;
+   height: 10px;
+   padding: 0 1px;
+}
+
+.gradetreebox table {
+   font-size: 0.8em;
+   border: 1px solid #ccc;
+}
+
+.gradetreebox tr.category th.cell.rowspan {
+   border-width: 1px;
+   border-left: 1px solid #ccc;
+}
+
+.gradetreebox td.name {
+   border-left: 1px;
+}
+
+.gradetreebox td.colspan {
+   border-left: 1px solid #aaa;
+   border-bottom: 1px solid #ccc;
+   border-top: none;
+   background-color: #ddd;
+}
+
+.path-grade form#choosepluginreport {
+   margin: 10px;
+   text-align: center;
+}
+
+.path-grade div#graded_users_selector, .path-grade div.no-overflow {
+   margin: 0 10px;
+   width: 100%;
+   text-align: center;
+}
+
+.path-grade div.no-overflow table, .path-grade table.user-grade {
+   width: 800px;
+   margin: 10px auto; 
+   text-align: left;
+}
+
+.path-grade div.gradeparent {
+   margin-left: 10px;
+   background-color: transparent;
+}
+
+.path-grade .left_scroller, .path-grade .left_scroller #fixed_column, .path-grade .right_scroller #user-grades {
+   vertical-align: top;
+   padding-top: 0;
+   margin-top: 0;
+}
+
+.path-grade .left_scroller {
+   margin-top: 20px;
+}
+
+#page-grade-report-unenrolled-preferences div.box {
+   background-color: transparent;
+   border: none;
+   box-shadow: none !important;
+}
+
+.path-grade fieldset.clearfix div.clearfix {
+   padding: 10px;
+   width: auto;
+   text-align: left;
+}
+
+.path-grade div.region-content>form>div {
+   margin-top: -20px;
+}
+
+.gradetreebox tr th.cell.level1, .gradetreebox tr th.cell.level2, .gradetreebox tr th.cell.level3, .gradetreebox tr th.cell.level4, .gradetreebox tr th.cell.level5, .gradetreebox tr th.cell.level6, .gradetreebox tr th.cell.level7, .gradetreebox tr th.cell.level8, .gradetreebox tr th.cell.level9 {
+   width: 10px !important;
+   padding: 0;
+   min-width: 10px !important;
+   border-top: 1px solid #ccc !important;
+   border-bottom: 1px solid #ccc !important;
+   border-right: 1px solid #ccc !important;
+}
+
+.gradetreebox tr.item td {
+   padding-left: 15px;
+}
+
+.gradetreebox tr.categoryitem td, .gradetreebox tr td.actions {
+   padding-left: 5px;
+}
+
+#page-grade-report-unenrolled-index th {
+   border-color: #bbb !important;
+}
+
+table#user-grades td.topleft {
+  border-width: 1px;
+}
+
+.path-grade-report-unenrolled table td.topleft {
+  border-width:1px;
+}
+
+#page-grade-report-unenrolled-index table th.filler, #page-grade-report-unenrolled-index table th.fillerfirst {
+  border-width: 0 !important;
+}
+
+#page-grade-report-unenrolled-index table td.fixedcolumn.lastcol {
+background-color: #fff;
+border-color: #fff;
+border-left-color: #bbb;
+}
+
+#page-grade-report-unenrolled-index table th.category {
+  border-left-width: 0px !important;
+}
+
+#page-grade-report-unenrolled-index table th.catlevel1, #page-grade-report-unenrolled-index table th.catlevel1highlightable, .gradetreebox tr .cell.level1, #page-grade-report-user-index table td.oddd1 {
+   background-color: #f0f0f0 !important;
+}
+
+#page-grade-report-unenrolled-index table th.catlevel2, #page-grade-report-unenrolled-index table th.catlevel2highlightable, .gradetreebox tr .cell.level2, #page-grade-report-user-index table td.oddd2 {
+   background-color: #cfc3e5 !important;
+}
+
+#page-grade-report-unenrolled-index table th.catlevel3, #page-grade-report-unenrolled-index table th.catlevel3highlightable, .gradetreebox tr .cell.level3, #page-grade-report-user-index table td.oddd3 {
+   background-color: #dae4bd !important;
+}
+
+#page-grade-report-unenrolled-index table th.catlevel4, #page-grade-report-unenrolled-index table th.catlevel4highlightable, .gradetreebox tr .cell.level4, #page-grade-report-user-index table td.oddd4 {
+   background-color: #cccccc !important;
+}
+
+#page-grade-report-unenrolled-index table th.catlevel5, #page-grade-report-unenrolled-index table th.catlevel5highlightable, .gradetreebox tr .cell.level5, #page-grade-report-user-index table td.oddd5 {
+   background-color: #ffcccc !important;
+}
+
+#page-grade-report-unenrolled-index table th.catlevel6, #page-grade-report-unenrolled-index table th.catlevel6highlightable, .gradetreebox tr .cell.level6, #page-grade-report-user-index table td.oddd6 {
+   background-color: #ccffcc !important;
+}
+
+#page-grade-report-unenrolled-index table th.catlevel7, #page-grade-report-unenrolled-index table th.catlevel7highlightable, .gradetreebox tr .cell.level7, #page-grade-report-user-index table td.oddd7 {
+   background-color: #ccccff !important;
+}
+
+#page-grade-report-unenrolled-index table th.catlevel8, #page-grade-report-unenrolled-index table th.catlevel8highlightable, .gradetreebox tr .cell.level8, #page-grade-report-user-index table td.oddd8 {
+   background-color: #ffffcc !important;
+}
+
+#page-grade-report-unenrolled-index table th.catlevel9, #page-grade-report-unenrolled-index table th.catlevel9highlightable, .gradetreebox tr .cell.level9, #page-grade-report-user-index table td.oddd9 {
+   background-color: #ccffff !important;
+}
+
+#page-grade-report-unenrolled-index .right_scroller .even td, #page-grade-report-unenrolled-index .left_scroller .even th {
+}
+
+#page-grade-report-unenrolled-index .right_scroller .odd td, #page-grade-report-unenrolled-index .left_scroller .odd th {
+   background-color: #efefef;
+}
+
+#page-grade-report-user-index table td {
+   border: 1px solid #bbb;
+}
+
+#page-grade-report-unenrolled-index table th.catlevel1highlightable a, #page-grade-report-unenrolled-index table th.catlevel1highlightable img {
+    margin: 0;
+    vertical-align: top;
+}
+
+#page-grade-report-unenrolled-index table th.catlevel2highlightable a, #page-grade-report-unenrolled-index table th.catlevel2highlightable img {
+    margin: 0;
+    vertical-align: top;
+}
+
+#page-grade-report-unenrolled-index table th.catlevel3highlightable a, #page-grade-report-unenrolled-index table th.catlevel3highlightable img {
+    margin: 0;
+    vertical-align: top;
+}
+
+#page-grade-report-unenrolled-index table th.catlevel4highlightable a, #page-grade-report-unenrolled-index table th.catlevel4highlightable img {
+    margin: 0;
+    vertical-align: top;
+}
+
+#page-grade-report-unenrolled-index table th.catlevel5highlightable a, #page-grade-report-unenrolled-index table th.catlevel5highlightable img {
+    margin: 0;
+    vertical-align: top;
+}
+
+#page-grade-report-unenrolled-index table th.catlevel6highlightable a, #page-grade-report-unenrolled-index table th.catlevel6highlightable img {
+    margin: 0;
+    vertical-align: top;
+}
+
+#page-grade-report-unenrolled-index table th.catlevel7highlightable a, #page-grade-report-unenrolled-index table th.catlevel7highlightable img {
+    margin: 0;
+    vertical-align: top;
+}
+
+#page-grade-report-unenrolled-index table th.catlevel8highlightable a, #page-grade-report-unenrolled-index table th.catlevel8highlightable img {
+    margin: 0;
+    vertical-align: top;
+}
+
+#page-grade-report-unenrolled-index table th.catlevel9highlightable a, #page-grade-report-unenrolled-index table th.catlevel9highlightable img {
+    margin: 0;
+    vertical-align: top;
+}
+
+#page-grade-report-unenrolled-index span.quickeditgrade {
+   padding-right: 8px;
+}
+
+#page-grade-report-unenrolled-index #studentheader a {
+   padding: 0 2px;
+}
+
+#page-grade-report-unenrolled-index table#fixed_column th.user.cell a {
+   vertical-align: -80%;
+}
+
+#page-grade-report-unenrolled-index div.right_scroller.topscroll {
+   height: 16px;
+}
+
+table#user-grades .hidden,
+table#user-grades .hidden a {
+color:#883333;
+}
+
+#page-grade-edit-tree-item #fitem_id_grademin input#id_grademin, #page-grade-edit-tree-category input#id_grade_item_grademin {
+  background-color: #ccc;
+}
+
+#page-grade-edit-tree-item #fitem_id_grademin, #page-grade-edit-tree-category #fitem_id_grade_item_grademin {
+ display: none;
+}
+
+.initialbar > :not(a) {
+ margin-right: .25em;
+ margin-left: .25em;
 }

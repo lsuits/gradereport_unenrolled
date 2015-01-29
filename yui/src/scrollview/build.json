@@ -1,7 +1,7 @@
 {
-    "name": "moodle-gradereport_grader-scrollview",
+    "name": "moodle-gradereport_unenrolled-scrollview",
     "builds": {
-        "moodle-gradereport_grader-scrollview": {
+        "moodle-gradereport_unenrolled-scrollview": {
             "jsfiles": [
                 "scrollview.js"
             ]
