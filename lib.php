@@ -133,9 +133,6 @@ class grade_report_unenrolled extends grade_report {
         // Grab the grade_tree for this course
         $this->gtree = new grade_tree($this->courseid, true, $switch, $this->collapsed, $nooutcomes);
 
-        // Load Anonymous items
-        $this->load_anonymous();
-
         $this->sortitemid = $sortitemid;
 
         // base url for sorting by first/last name
@@ -823,8 +820,6 @@ class grade_report_unenrolled extends grade_report {
                     $jsarguments['grades'][] = array('user'=>$userid, 'item'=>$itemid, 'grade'=>$gradevalforjs);
                 }
 
-                $is_anon = isset($this->anonymous_items[$itemid]);
-
                 // MDL-11274
                 // Hide grades in the unenrolled report if the current unenrolled doesn't have 'moodle/grade:viewhidden'
                 if (!$this->canviewhidden and $grade->is_hidden()) {
@@ -930,15 +925,13 @@ class grade_report_unenrolled extends grade_report {
     }
 
     /**
-     * Depending on the style of report (fixedstudents vs traditional one-table),
-     * arranges the rows of data in one or two tables, and returns the output of
+     * Arranges the rows of data in one or two tables, and returns the output of
      * these tables in HTML
      * @param boolean $displayaverages whether to display average rows in the table
      * @return string HTML
      */
     public function get_grade_table($displayaverages = false) {
         global $OUTPUT;
-        $fixedstudents = $this->is_fixed_students();
 
         $leftrows = $this->get_left_rows($displayaverages);
         $rightrows = $this->get_right_rows($displayaverages);
@@ -1111,37 +1104,6 @@ class grade_report_unenrolled extends grade_report {
 
         return true;
     }
-
-    /**
-     * Returns whether or not to display fixed students column.
-     * Includes a browser check, because IE6 doesn't support the scrollbar.
-     *
-     * @return bool
-     */
-    public function is_fixed_students() {
-        global $CFG;
-
-        return $CFG->grade_report_fixedstudents;
-    }
-
-    public function load_anonymous() {
-
-        if (empty($this->anonymous_items)) {
-            global $DB;
-            $sql = 'SELECT anon.* FROM {grade_items} gi, {grade_anon_items} anon
-                WHERE anon.itemid = gi.id';
-
-            $this->anonymous_items = array();
-
-            foreach ($DB->get_records_sql($sql) as $item) {
-                $this->anonymous_items[$item->itemid] =
-                    grade_anonymous::fetch(array('id' => $item->id));
-            }
-        }
-
-        return $this->anonymous_items;
-    }
-
 
     /**
      * Refactored function for generating HTML of sorting links with matching arrows.
