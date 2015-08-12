@@ -53,7 +53,6 @@ class unenrolled_report_preferences_form extends moodleform {
 
         // View capability is the lowest permission. Users with grade:manage or grade:edit must also have unenrolled:view
         if (has_capability('gradereport/unenrolled:view', $context)) {
-            $preferences['prefgeneral']['studentsperpage'] = 'text';
             $preferences['prefgeneral']['repeatheaders'] = 'text';
             $preferences['prefgeneral']['aggregationposition'] = array(GRADE_REPORT_PREFERENCE_DEFAULT => '*default*',
                                                                        GRADE_REPORT_AGGREGATION_POSITION_FIRST => get_string('positionfirst', 'grades'),
