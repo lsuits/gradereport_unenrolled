@@ -139,11 +139,6 @@ class grade_report_unenrolled extends grade_report {
 
         $this->baseurl = new moodle_url('index.php', array('id' => $this->courseid));
 
-        $studentsperpage = $this->get_students_per_page();
-        if (!empty($this->page) && !empty($studentsperpage)) {
-            $this->baseurl->params(array('perpage' => $studentsperpage, 'page' => $this->page));
-        }
-
         $this->pbarurl = new moodle_url('/grade/report/unenrolled/index.php', array('id' => $this->courseid));
 
         $this->setup_users();
@@ -408,21 +403,29 @@ class grade_report_unenrolled extends grade_report {
             $params = array_merge($this->userwheresql_params, $relatedctxparams);
         }
 
+        // get currently enrolled userids
+        $sql = "SELECT DISTINCT(ue.userid)
+                  FROM {user_enrolments} ue
+                  JOIN {enrol} e ON e.id = ue.enrolid
+                  WHERE e.courseid = $this->courseid
+                    AND ue.timestart < NOW()
+                    AND (ue.timeend = 0 OR ue.timeend > NOW())";
+        $enrolled_user_ids = $DB->get_records_sql($sql);
+
+        // get all users who match user criteria
         $sql = "SELECT DISTINCT(u.id) AS distinctusers, $userfields
                   FROM {user} u
                   INNER JOIN {grade_grades_history} g ON u.id = g.userid
                   INNER JOIN {grade_items} gi ON gi.id = g.itemid AND gi.courseid = $this->courseid
-                  WHERE u.id NOT IN (SELECT DISTINCT(ue.userid)
-                      FROM {user_enrolments} ue
-                      JOIN {enrol} e ON e.id = ue.enrolid
-                     WHERE e.courseid = $this->courseid
-                           AND ue.timestart < NOW() AND (ue.timeend = 0 OR ue.timeend > NOW()))
                   $this->userwheresql
                 ORDER BY $sort";
+        $all_users = $DB->get_records_sql($sql, $params);
 
-        $studentsperpage = $this->get_students_per_page();
-        $this->numusers = $DB->get_records_sql($sql, $params);
-        $this->users = $DB->get_records_sql($sql, $params, $studentsperpage * $this->page, $studentsperpage);
+        // separate enrolled users from selected users
+        $unerolled_users = array_diff_key($all_users, $enrolled_user_ids);
+
+        $this->numusers = $unerolled_users;
+        $this->users = $unerolled_users; // @TODO - consider pagination preferences - $DB->get_records_sql($sql, $params);
         if (empty($this->users)) {
             $this->userselect = '';
             $this->users = array();
@@ -909,7 +912,6 @@ class grade_report_unenrolled extends grade_report {
         }
 
         $jsarguments['cfg']['courseid'] =  $this->courseid;
-        $jsarguments['cfg']['studentsperpage'] =  $this->get_students_per_page();
         $jsarguments['cfg']['showquickfeedback'] =  (bool)$this->get_pref('showquickfeedback');
 
         $module = array(
@@ -1162,15 +1164,6 @@ class grade_report_unenrolled extends grade_report {
         }
 
         return $arrows;
-    }
-
-    /**
-     * Returns the maximum number of students to be displayed on each page
-     *
-     * @return int The maximum number of students to display per page
-     */
-    public function get_students_per_page() {
-        return $this->get_pref('studentsperpage');
     }
 
     public function get_weighted_percents($item) {

@@ -100,12 +100,6 @@ foreach ($warnings as $warning) {
     echo $OUTPUT->notification($warning);
 }
 
-$studentsperpage = $report->get_students_per_page();
-// Don't use paging if studentsperpage is empty or 0 at course AND site levels
-if (!empty($studentsperpage)) {
-    echo $OUTPUT->paging_bar($numusers, $report->page, $studentsperpage, $report->pbarurl);
-}
-
 $displayaverages = true;
 if ($numusers == 0) {
     $displayaverages = false;
@@ -115,8 +109,4 @@ $reporthtml = $report->get_grade_table($displayaverages);
 
 echo $reporthtml;
 
-// prints paging bar at bottom for large pages
-if (!empty($studentsperpage)) {
-    echo $OUTPUT->paging_bar($numusers, $report->page, $studentsperpage, $report->pbarurl);
-}
 echo $OUTPUT->footer();
